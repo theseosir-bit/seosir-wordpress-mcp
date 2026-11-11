@@ -1,0 +1,37 @@
+# Render Blueprint for the standalone Node.js MCP server.
+# IMPORTANT: production is intentionally fail-closed until an actual OAuth IdP is configured.
+# Do NOT set APP_ENV=development or DEV_BEARER_TOKEN for this public deployment.
+services:
+  - type: web
+    name: seosir-wordpress-mcp
+    runtime: node
+    rootDir: mcp
+    region: frankfurt
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeployTrigger: off
+    envVars:
+      - key: WP_URL
+        value: https://seosir.ir
+      - key: WP_USERNAME
+        sync: false
+      - key: WP_APPLICATION_PASSWORD
+        sync: false
+      - key: APP_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: ENABLE_ELEMENTOR_WRITES
+        value: 'false'
+      - key: PUBLIC_MCP_URL
+        sync: false
+      - key: OAUTH_ISSUER
+        sync: false
+      - key: OAUTH_JWKS_URL
+        sync: false
+      - key: OAUTH_AUDIENCE
+        sync: false
+      - key: OAUTH_ALLOWED_SUB
+        sync: false

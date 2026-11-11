@@ -1,0 +1,29 @@
+{
+  "name": "wordpress-mcp-private",
+  "private": true,
+  "version": "0.3.1",
+  "type": "module",
+  "engines": {"node": ">=20.19"},
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "chat": "tsx src/api-client.ts",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.0",
+    "dotenv": "^17.0.0",
+    "express": "^5.0.0",
+    "jose": "^6.0.0",
+    "openai": "^6.0.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

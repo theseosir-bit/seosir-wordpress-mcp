@@ -1,0 +1,23 @@
+# Reference only. Edit all /opt/wordpress-mcp paths and create a limited unprivileged user.
+[Unit]
+Description=Private WordPress MCP Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=wordpress-mcp
+Group=wordpress-mcp
+WorkingDirectory=/opt/wordpress-mcp/mcp
+EnvironmentFile=/opt/wordpress-mcp/mcp/.env
+ExecStart=/usr/bin/node /opt/wordpress-mcp/mcp/dist/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/wordpress-mcp/mcp
+
+[Install]
+WantedBy=multi-user.target
