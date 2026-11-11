@@ -1,0 +1,29 @@
+{
+  "name": "seosir-wordpress-cloudflare-mcp",
+  "private": true,
+  "version": "0.4.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.16"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test test/*.test.mjs",
+    "db:local": "wrangler d1 migrations apply seosir-wordpress-mcp-db --local",
+    "db:remote": "wrangler d1 migrations apply seosir-wordpress-mcp-db --remote"
+  },
+  "dependencies": {
+    "agents": "^0.28.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "zod": "^4.0.0",
+    "@modelcontextprotocol/client": "2.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "*",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.0.0"
+  }
+}

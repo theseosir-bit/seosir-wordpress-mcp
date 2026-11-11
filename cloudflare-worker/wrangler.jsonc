@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "seosir-wordpress-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-29",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "vars": {
+    "WP_URL": "https://seosir.ir",
+    "WP_USERNAME": "mcp-editor",
+    "APP_MODE": "staging-readonly"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "seosir-wordpress-mcp-db",
+      "database_id": "REPLACE_WITH_D1_DATABASE_UUID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": {"enabled": true}
+}
